@@ -25,7 +25,6 @@ public class Principal {
         
         // loop principal do programa
         while (continuar) {
-        	mostraMenu();
         	int opcao = SelecionaOpcao(sc);
         	
         	// verificar cada caso da opção numérica do programa
@@ -35,7 +34,7 @@ public class Principal {
                 case 3-> pesquisar(sc, nomes, celulares, emails);
                 case 4-> atualizar(sc, nomes, celulares, emails);
                 case 5-> excluir(sc, nomes, celulares, emails);
-                case 6-> sair(continuar);
+                case 6-> continuar = sair();
                 default ->System.out.println("Opção inválida!");
             }
         }
@@ -45,39 +44,28 @@ public class Principal {
     
     // Mostra cabeçalho;
     public static void mostraInicializacao() {
-        System.out.println("==========================");
-        System.out.println("     AGENDA DE CONTATOS    ");
-        System.out.println("          v1.0.0           ");
-        System.out.println("==========================");
-        System.out.println("Bem-vindo!");
-    }
-    
-    // Mostra menu de opções
-    public static void mostraMenu() {
-    System.out.println();
-    System.out.println("1 - Adicionar contato");
-    System.out.println("2 - Listar contatos");
-    System.out.println("3 - Procurar contato");
-    System.out.println("4 - Alterar contato");
-    System.out.println("5 - Excluir contato");
-    System.out.println("6 - Sair");
-
+        System.out.println("+========================+");
+        System.out.println("|    AGENDA DE CONTATOS  |");
+        System.out.println("|         v1.0.0         |");
+        System.out.println("+========================+");
+        System.out.println("        Bem-vindo!        ");
     }
     
     // Selecionar um valor numérico para opção
     public static int SelecionaOpcao(Scanner sc) {
-    System.out.println();
-    System.out.println("1 - Adicionar contato");
-    System.out.println("2 - Listar contatos");
-    System.out.println("3 - Procurar contato");
-    System.out.println("4 - Alterar contato");
-    System.out.println("5 - Excluir contato");
-    System.out.println("6 - Sair");
+    	System.out.println("--------------------------");
+    	System.out.println("1 - Adicionar contato");
+    	System.out.println("2 - Listar contatos");
+    	System.out.println("3 - Procurar contato");
+    	System.out.println("4 - Alterar contato");
+    	System.out.println("5 - Excluir contato");
+    	System.out.println("6 - Sair");
+    	System.out.println("--------------------------\n");
 
-    System.out.print("Escolha uma opção: ");
-    int opc = sc.nextInt();
-    sc.nextLine();
-    return opc;
+    	System.out.print("Escolha uma opção:\n");
+    	int opc = sc.nextInt();
+    	sc.nextLine();
+    	return opc;
     }
     
     // função adicionar contato
@@ -195,6 +183,9 @@ public class Principal {
         }
     }
     
-    // função besta de tornar "continuar" como falso e acabar o programa
-    public static void sair(boolean continuar) {continuar = false;}
+    // função para retornar false
+    public static boolean sair() {
+    	System.out.println("\nSaindo da Agenda de Contatos ...");
+    	return false;
+    	}
 }

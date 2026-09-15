@@ -3,6 +3,7 @@ package br.edu.principal;
 import java.util.List;
 import java.util.Scanner;
 
+// Classe responsável por admnistrar processos da agenda
 public class Agenda {
     // função adicionar contato
     public static void adicionar(Scanner sc, List<String> nomes,List<String> celulares,List<String> emails) {

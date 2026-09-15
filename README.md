@@ -117,6 +117,8 @@ Os contatos continuam sendo armazenados em três listas do tipo `List<String>`:
 ## Versão atual
  **V.1.1.0 - Modularização das funcionalidades em arquivos separados (Uteis e Agenda)**
 
+  **V.1.1.1 - Modularização das funcionalidades em arquivos separados (Uteis e Agenda e Correção de Bug)**
+
 ### Próximas versões
 
 O projeto continuará evoluindo.
@@ -125,6 +127,7 @@ O projeto continuará evoluindo.
 <!-- - `v0.3.0` — funcionalidade de alterar contato; -->
 - `v1.0.0` - Modularização das funcionalidades
 - `v1.1.0` - Modularização das funcionalidades em arquivos separados
+- `v1.1.1` - Modularização das funcionalidades em arquivos separados (correção de bug no SAIR)
 
 ## Controle de versões
 

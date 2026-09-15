@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import javax.swing.JOptionPane;
 
+// Classe responsável por fazer operações úteis dentro do programa
 public class Uteis {
     // Mostra cabeçalho;
     public static void mostraInicializacao() {
@@ -15,7 +16,7 @@ public class Uteis {
     }
     
     // Selecionar um valor numérico para opção
-    public static int SelecionaOpcao(Scanner sc) {
+    public static void mostraMenu() {
     	System.out.println("--------------------------");
     	System.out.println("1 - Adicionar contato");
     	System.out.println("2 - Listar contatos");
@@ -25,7 +26,9 @@ public class Uteis {
     	System.out.println("6 - Sair");
     	System.out.println("7 - Sobre");
     	System.out.println("--------------------------\n");
-
+    }
+    	
+    public static int SelecionaOpcao(Scanner sc) {
     	System.out.print("Escolha uma opção:\n");
     	int opc = sc.nextInt();
     	sc.nextLine();
@@ -33,10 +36,13 @@ public class Uteis {
     }
     
     // função para retornar false
-    public static void sair(boolean continuar) {
-    		continuar = false;
+    public static boolean sair() {
+    		System.out.println("\nSaindo da Agenda de Contatos ... FIM!");
+    		return false;
     	}
+    
+    // Pop-up com JFrame, JLabels, Jtitle
     public static void Sobre() {
-    	JOptionPane.showMessageDialog(null, "Desenvolvido por RMS!");
+    	JOptionPane.showMessageDialog(null, "Plok!");
     }
 }

@@ -66,9 +66,7 @@ Principais características:
 - iteração com `for-each`;
 - simplificação das operações de inserção, busca e remoção.
 
-## Versão atual
-
-**v0.3.0**
+### v0.3.0
 
 Nesta versão, a Agenda de Contatos recebeu a implementação da funcionalidade de **alteração de contatos**.
 
@@ -79,13 +77,54 @@ Nesta versão, a Agenda de Contatos recebeu a implementação da funcionalidade 
 - Atualização dos dados nas listas (`List` / `ArrayList`) utilizando o método `set()`
 - Reutilização da lógica de validação/busca para localização do registro antes da modificação
 
+## V1.0.0 - Modularização das funcionalidades
+
+Nesta versão, o projeto Agenda de Contatos foi reorganizado por meio da criação de métodos.
+
+### Principais alterações
+
+- Modularização do código procedural.
+- Criação do método `adicionar()`.
+- Criação do método `listar()`.
+- Criação do método `pesquisar()`.
+- Criação do método `atualizar()`.
+- Criação do método `excluir()`.
+- Simplificação do `switch-case`.
+- Uso de parâmetros para compartilhar os dados entre os métodos.
+- Organização das responsabilidades do método `main()`.
+
+### Armazenamento
+
+Os contatos continuam sendo armazenados em três listas do tipo `List<String>`:
+
+- nomes;
+- celulares;
+- e-mails.
+
+### Conceitos trabalhados
+
+- métodos;
+- parâmetros;
+- argumentos;
+- retorno;
+- `void`;
+- escopo de variáveis;
+- modularização;
+- refatoração.
+
+> A versão v1.0.0 mantém as funcionalidades da v0.3.0, alterando principalmente a organização interna do código.
+
+## Versão atual
+ **V.1.1.0 - Modularização das funcionalidades em arquivos separados (Uteis e Agenda)**
+
 ### Próximas versões
 
 O projeto continuará evoluindo.
 <!-- - `v0.1.0` — armazenamento com Arrays; -->
 <!-- - `v0.2.0` — armazenamento com List e ArrayList; -->
 <!-- - `v0.3.0` — funcionalidade de alterar contato; -->
-- `v0.4.0` e posteriores — modularização, introdução de classes e objetos, encapsulamento, DAO, MVC, Swing, JDBC e banco de dados.
+- `v1.0.0` - Modularização das funcionalidades
+- `v1.1.0` - Modularização das funcionalidades em arquivos separados
 
 ## Controle de versões
 
@@ -94,7 +133,11 @@ As versões estáveis do projeto são identificadas por tags Git.
 Exemplo:
 
 ```text
-v0.0.0
-v0.1.0
-v0.2.0
-v0.3.0
+- V0
+  - V0.0.0
+  - V0.1.0
+  - V0.2.0
+  - V0.3.0
+- V1
+  - V1.0.0
+  - V1.1.0

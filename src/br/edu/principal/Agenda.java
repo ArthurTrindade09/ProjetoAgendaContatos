@@ -3,11 +3,14 @@ package br.edu.principal;
 import java.util.List;
 import java.util.Scanner;
 
-// Classe responsável por admnistrar processos da agenda
 public class Agenda {
-    // função adicionar contato
-    public static void adicionar(Scanner sc, List<String> nomes,List<String> celulares,List<String> emails) {
-        System.out.println("=== ADICIONAR CONTATO ===");
+	
+	public static void adicionar(
+			Scanner sc, 
+			List<String> nomes, 
+			List<String> celulares, 
+			List<String> emails) {
+    	System.out.println("=== ADICIONAR CONTATO ===");
         System.out.print("Digite o nome: ");
         String nome = sc.nextLine();
         System.out.print("Digite o celular: ");
@@ -21,10 +24,12 @@ public class Agenda {
 
         System.out.println("Contato adicionado com sucesso!");
     }
-    
-    // função listar todos os contatos
-    public static void listar(List<String> nomes, List<String> celulares, List<String> emails) {
-        System.out.println("=== LISTAR CONTATOS ===");
+	
+	public static void listar(
+            List<String> nomes,
+            List<String> celulares,
+            List<String> emails) {
+    	System.out.println("=== LISTAR CONTATOS ===");
         if (nomes.size() == 0) {
             System.out.println("Nenhum contato cadastrado!");
 
@@ -38,9 +43,12 @@ public class Agenda {
             }
         }
     }
-    
-    // função pesquisar contato específico
-    public static void pesquisar(Scanner sc, List<String> nomes, List<String> celulares, List<String> emails) {
+
+    public static void pesquisar(
+            Scanner sc,
+            List<String> nomes,
+            List<String> celulares,
+            List<String> emails) {
     	System.out.println("=== PROCURAR CONTATO ===");
         System.out.print("Digite o nome do contato: ");
         String nomeBusca = sc.nextLine();
@@ -61,9 +69,12 @@ public class Agenda {
             System.out.println("Contato não encontrado!");
         }
     }
-    
-    // função de atualizar informações de um contato
-    public static void atualizar(Scanner sc, List<String> nomes, List<String> celulares, List<String> emails) {
+
+    public static void atualizar(
+            Scanner sc,
+            List<String> nomes,
+            List<String> celulares,
+            List<String> emails) {
     	System.out.println("=== ALTERAR CONTATO ===");
         System.out.print("Digite o nome do contato: ");
         String nomeProcurado = sc.nextLine();
@@ -94,9 +105,12 @@ public class Agenda {
             System.out.println("Contato não encontrado!");
         }
     }
-    
-    // função de apagar um contato da lista
-    public static void excluir(Scanner sc, List<String> nomes, List<String> celulares, List<String> emails) {
+
+    public static void excluir(
+            Scanner sc,
+            List<String> nomes,
+            List<String> celulares,
+            List<String> emails) {
     	System.out.println("=== EXCLUIR CONTATO ===");
         System.out.print("Digite o nome do contato: ");
         String nomeExcluir = sc.nextLine();
@@ -119,4 +133,5 @@ public class Agenda {
             System.out.println("Contato não encontrado!");
         }
     }
+    
 }

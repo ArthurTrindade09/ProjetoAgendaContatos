@@ -1,146 +1,156 @@
-# Agenda de Contatos
 
-Projeto didático desenvolvido em Java para acompanhar a evolução dos conceitos trabalhados na disciplina de Programação Orientada a Objetos.
+# Sistema de Gerenciamento de Contatos
 
-O sistema é desenvolvido de forma incremental. Cada versão introduz novos conceitos, estruturas e melhorias sobre a versão anterior.
+Este é um projeto acadêmico desenvolvido em **Java** com o objetivo de demonstrar, na prática, o progresso e a aplicação dos conceitos lecionados na disciplina de **Programação Orientada a Objetos (POO)**.
 
-## Objetivo
+A aplicação foi construída de maneira incremental: cada nova versão serve como base para introduzir estruturas de dados mais complexas, boas práticas de arquitetura e novas funcionalidades.
 
-Construir uma Agenda de Contatos completa, iniciando com uma solução procedural simples e evoluindo gradualmente para uma aplicação organizada com conceitos de Programação Orientada a Objetos, interface gráfica e persistência de dados.
+## Escopo do Projeto
 
-## Evolução do projeto
+O foco principal é o desenvolvimento de uma **Agenda de Contatos**. A jornada do código inicia em uma estrutura puramente sequencial e procedural, evoluindo passo a passo até se transformar em um software robusto com conceitos de POO, interface gráfica e armazenamento persistente.
 
-| Versão | Armazenamento | Descrição |
+## Cronograma de Versões e Recursos
+
+| Versão | Mecanismo de Armazenamento | Resumo da Implementação |
 |---|---|---|
-| v0.0.0 | Variáveis simples | Permite armazenar apenas um contato |
-| v0.1.0 | Arrays | Permite vários contatos com capacidade fixa |
-| v0.2.0 | List + ArrayList | Permite vários contatos com tamanho dinâmico |
-| v0.3.0 | List + ArrayList | Adiciona a opção de alteração de contatos cadastrados |
+| **v0.0.0** | Variáveis primitivas | Retém apenas um único registro ativo em memória |
+| **v0.1.0** | Vetores (Arrays) | Capacidade para múltiplos registros com limite estático |
+| **v0.2.0** | List + ArrayList | Gerenciamento de múltiplos contatos com tamanho flexível |
+| **v0.3.0** | List + ArrayList | Inclusão do recurso de edição para registros salvos |
+| **v1.0.0** | List + ArrayList | Divisão do código em blocos lógicos (métodos) na classe principal |
+| **v1.1.0** | List + ArrayList | Desacoplamento de código em novas classes e arquivos de suporte |
+| **v1.1.1** | List + ArrayList | Resolução de falha crítica na rotina de fechamento do sistema |
+| **v2.1.0** | Arquivo TXT (Java I/O) | Armazenamento permanente em disco usando formato texto |
 
-### v0.0.0 — Programação Procedural Básica
+---
 
-Primeira versão da Agenda.
+### v0.0.0 — Paradigma Procedural Inicial
 
-Principais características:
+A fundação inicial do sistema.
 
-- uma única classe `Principal`;
-- todo o código dentro do método `main()`;
-- armazenamento de apenas um contato;
-- variáveis `nome`, `celular` e `email`;
-- menu em console;
-- uso de `Scanner`;
-- uso de `if-else`;
-- uso de `switch-case`;
-- uso de `while`;
-- funcionalidades:
-  - adicionar contato;
-  - listar contato;
-  - procurar contato;
-  - excluir contato;
-  - sair.
+**Destaques desta versão:**
+- Estrutura concentrada unicamente na classe `Principal`;
+- Execução linear concentrada inteiramente dentro do método `main()`;
+- Limitação de salvamento para apenas um contato por vez;
+- Escopo baseado nas variáveis isoladas: `nome`, `celular` e `email`;
+- Interface interativa via terminal (`Scanner`, rotinas `if-else`, `switch-case` e laço `while`);
+- Operações disponíveis: Cadastro, Listagem, Busca, Remoção e Encerramento.
 
-Nesta versão, um novo contato substitui o contato armazenado anteriormente.
+---
 
-### v0.1.0 — Arrays e Capacidade Fixa
+### v0.1.0 — Estruturas de Vetores e Limites Fixos
 
-Segunda versão da Agenda.
+A primeira evolução focada em múltiplos dados.
 
-Principais características:
+**Destaques desta versão:**
+- Substituição de variáveis isoladas por arrays tradicionais (`String[]`) para cada propriedade;
+- Definição e controle rígido de um teto máximo de registros suportados;
+- Varredura e manipulação baseada em índices numéricos e laços `for`;
+- Lógica de busca linear e reorganização das posições do vetor após exclusões.
 
-- uso de arrays simples (`String[]`) para cada atributo;
-- controle de capacidade máxima pré-definida;
-- manipulação através de índices e estrutura `for`;
-- busca sequencial nos arrays;
-- remoção de elementos com reorganização física do array (deslocamento de itens).
+---
 
-### v0.2.0 — Armazenamento Dinâmico com ArrayList
+### v0.2.0 — Coleções Dinâmicas com ArrayList
 
-Terceira versão da Agenda.
+Transição para estruturas de memória flexíveis nativas do ecossistema Java.
 
-Principais características:
+**Destaques desta versão:**
+- Adoção do framework de coleções do Java por meio de `List` e `ArrayList`;
+- Implementação de tipagem segura utilizando Generics (`<String>`);
+- Alocação de memória sob demanda, eliminando limites rígidos de tamanho;
+- Emprego prático dos métodos nativos da linguagem: `add`, `get`, `remove`, `size` e `indexOf`;
+- Simplificação da leitura de dados através do laço `for-each`.
 
-- uso da API de Coleções do Java (`List` e `ArrayList`);
-- uso de Generics (`<String>`);
-- alocação e redimensionamento dinâmico;
-- métodos da API (`add`, `get`, `remove`, `size`, `indexOf`, etc.);
-- iteração com `for-each`;
-- simplificação das operações de inserção, busca e remoção.
+---
 
-### v0.3.0
+### v0.3.0 — Atualização Dinâmica de Dados
 
-Nesta versão, a Agenda de Contatos recebeu a implementação da funcionalidade de **alteração de contatos**.
+Implementação do ciclo completo de modificação de registros.
 
-### Principais características e conceitos
+**Destaques desta versão:**
+- Acréscimo de uma nova funcionalidade ao menu interativo: **Alterar contato**;
+- Fluxo que localiza previamente o índice do registro alvo antes da modificação;
+- Atualização em tempo real das listas utilizando o método nativo `set()`.
 
-- Nova opção no menu: **Alterar contato**
-- Busca do contato a ser alterado
-- Atualização dos dados nas listas (`List` / `ArrayList`) utilizando o método `set()`
-- Reutilização da lógica de validação/busca para localização do registro antes da modificação
+---
 
-## V1.0.0 - Modularização das funcionalidades
+### v1.0.0 — Modularização e Funções Específicas
 
-Nesta versão, o projeto Agenda de Contatos foi reorganizado por meio da criação de métodos.
+Primeiro grande passo de refatoração para organizar o fluxo de código procedural.
 
-### Principais alterações
+**Mudanças estruturais:**
+- Distribuição das regras de negócio nos métodos dedicados: `adicionar()`, `listar()`, `pesquisar()`, `atualizar()` e `excluir()`;
+- Limpeza drástica no método principal (`main`), tornando o bloco do `switch-case` mais limpo;
+- Fluxo de dados controlado por meio de parâmetros de entrada e argumentos de funções;
+- Fixação de conceitos teóricos como escopo de variáveis, comportamentos sem retorno (`void`) e técnicas de refatoração de código.
 
-- Modularização do código procedural.
-- Criação do método `adicionar()`.
-- Criação do método `listar()`.
-- Criação do método `pesquisar()`.
-- Criação do método `atualizar()`.
-- Criação do método `excluir()`.
-- Simplificação do `switch-case`.
-- Uso de parâmetros para compartilhar os dados entre os métodos.
-- Organização das responsabilidades do método `main()`.
+---
 
-### Armazenamento
+### v1.1.0 — Separação de Arquivos e Responsabilidades
 
-Os contatos continuam sendo armazenados em três listas do tipo `List<String>`:
+Abordagem focada em design de software e desacoplamento.
 
-- nomes;
-- celulares;
-- e-mails.
+**Mudanças estruturais:**
+- Criação de novas classes utilitárias e de controle de dados (`Uteis` e `Agenda`);
+- Divisão explícita entre a camada de apresentação ao usuário (regras do console) e a camada com a lógica de manipulação de contatos.
 
-### Conceitos trabalhados
+---
 
-- métodos;
-- parâmetros;
-- argumentos;
-- retorno;
-- `void`;
-- escopo de variáveis;
-- modularização;
-- refatoração.
+### v1.1.1 — Ajuste Técnico de Fluxo (Hotfix)
 
-> A versão v1.0.0 mantém as funcionalidades da v0.3.0, alterando principalmente a organização interna do código.
+Uma subversão voltada à estabilidade da ramificação v1.x.
 
-## Versão atual
- **V.1.1.0 - Modularização das funcionalidades em arquivos separados (Uteis e Agenda)**
+**Mudanças estruturais:**
+- Correção de um comportamento inesperado no encerramento do programa (opção de Saída);
+- Implementação de boas práticas para garantir o encerramento correto do fluxo de leitura do objeto `Scanner`.
 
-  **V.1.1.1 - Modularização das funcionalidades em arquivos separados (Uteis e Agenda e Correção de Bug)**
+---
 
-### Próximas versões
+### v2.1.0 — Persistência em Arquivo Físico (TXT)
 
-O projeto continuará evoluindo.
-<!-- - `v0.1.0` — armazenamento com Arrays; -->
-<!-- - `v0.2.0` — armazenamento com List e ArrayList; -->
-<!-- - `v0.3.0` — funcionalidade de alterar contato; -->
-- `v1.0.0` - Modularização das funcionalidades
-- `v1.1.0` - Modularização das funcionalidades em arquivos separados
-- `v1.1.1` - Modularização das funcionalidades em arquivos separados (correção de bug no SAIR)
+Migração do armazenamento volátil em memória para **gravação permanente**. Os contatos agora resistem ao fechamento do programa e permanecem gravados em um arquivo local `.txt`.
 
-## Controle de versões
+**Destaques e conceitos explorados:**
+- Operações de leitura e escrita em disco orientadas pela biblioteca `java.io`;
+- Manipulação e mapeamento físico do arquivo de dados com a classe `File`;
+- Leitura otimizada por buffer linha a linha utilizando `FileReader` e `BufferedReader`;
+- Escrita e formatação estruturada de dados através de `FileWriter` e `PrintWriter`;
+- Inicialização inteligente com carregamento automático dos contatos salvos no arquivo;
+- Rotinas que mantêm o arquivo TXT perfeitamente sincronizado a cada inserção, edição ou exclusão;
+- Gestão de erros com o tratamento adequado de exceções do tipo `IOException`.
 
-As versões estáveis do projeto são identificadas por tags Git.
+---
 
-Exemplo:
+## Estado Atual da Aplicação
+
+O projeto encontra-se na versão **v2.1.0** — Implementação de persistência de dados em arquivos TXT via pacotes `java.io`.
+
+---
+
+## Histórico de Tags
+
+O controle de histórico e marcos do repositório adota a seguinte convenção de tags no Git:
 
 ```text
-- V0
-  - V0.0.0
-  - V0.1.0
-  - V0.2.0
-  - V0.3.0
-- V1
-  - V1.0.0
-  - V1.1.0
+- v0 (Fase Inicial / Estruturas Básicas)
+  - v0.0.0
+  - v0.1.0
+  - v0.2.0
+  - v0.3.0
+- v1 (Refatoração e Modularização)
+  - v1.0.0
+  - v1.1.0
+  - v1.1.1
+- v2 (Persistência de Dados)
+  - v2.1.0
+```
+
+#### let's go gambling!
+
+<img src="image-1.png" alt="apostas são monocromáticas" height="70" width="70" />
+
+<img src="image-2.png" alt="benda" width="70" />
+
+<img src="image-3.png" alt="lets go gambling" width="70" />
+
+-> "Oh dang it!"

@@ -204,10 +204,10 @@ public class Contato {
 
 #### let's go gambling!
 
-<img src="image-1.png" alt="apostas são monocromáticas" height="70" width="70" />
+<img src="image-1.png" alt="apostas são monocromáticas" width="120" height="80" />
 
-<img src="image-2.png" alt="benda" width="70" />
+<img src="image-2.png" alt="benda" width="120" height="80" />
 
-<img src="image-3.png" alt="lets go gambling" width="70" />
+<img src="image-3.png" alt="lets go gambling" width="120" height="80" />
 
--> "Oh dang it!"
+⬆️"Oh dang it!"⬆️

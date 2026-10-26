@@ -1,2 +1,4 @@
-amendoim;a;a
+CharlieBrownie;69;veryfunny@email.com.br
 Snoopy;123456789;snoopy_50@gmail.com.br
+Roger;904754839;roger@email.com
+OnvelessBrownies;OnvelessBrownie;OnvelessBrownie

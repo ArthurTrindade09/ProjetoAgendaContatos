@@ -4,41 +4,44 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+// V3.2.0 IMPLEMENTA CRUD ORIENTADO A OBJETOS
+
 public class Principal {
 	
 	public static void main(String[] args) {
 
+		List<Contato> contatos = new ArrayList<>(); // CRIAR UMA LISTA DE CONTATOS
 
-        List<String> nomes = new ArrayList<>();
-        List<String> celulares = new ArrayList<>();
-        List<String> emails = new ArrayList<>();
-        Persistencia.carregarContatos(nomes, celulares, emails);
+        Persistencia.carregarContatos(contatos); // CARREGA A LISTA DE CONTATOS
         
+        // CRIAR VARIAVEIS DE CONTROLE DO PROGRAMA
         int opcao;
         boolean continuar = true;
         
-        Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in); // OBJETO QUE RECEBE ENTRADAS DO USUÁRIO
         
-        Uteis.mostraInicializacao(); 
+        Uteis.mostraInicializacao();  // MOSTRA TELINHA PRINCIPAL 
 
+        // LOOP PRINCIPAL DO PROGRAMA
         while (continuar) {
-        	Uteis.mostraMenu();
+        
+        	Uteis.mostraMenu(); // MOSTRA TELINHA DAS OPÇÕES
             opcao = Uteis.selecionaOpcao(sc);
 
             switch (opcao) {
-                case 1-> Agenda.adicionar(sc, nomes, celulares, emails);           	
-                case 2-> Agenda.listar(nomes, celulares, emails);
-                case 3-> Agenda.pesquisar(sc, nomes, celulares, emails);
-                case 4-> Agenda.atualizar(sc, nomes, celulares, emails);           	
-                case 5-> Agenda.excluir(sc, nomes, celulares, emails);          	
+                case 1-> Agenda.adicionar(sc, contatos);   // ADICIONAR         	
+                case 2-> Agenda.listar(contatos);          // LISTAR
+                case 3-> Agenda.pesquisar(sc, contatos);   // PESQUISAR
+                case 4-> Agenda.atualizar(sc, contatos);   // ATUALIZAR
+                case 5-> Agenda.excluir(sc, contatos);     // EXCLUIR
                 case 6-> {
-                	Persistencia.salvarContatos(nomes, celulares, emails);
+                	Persistencia.salvarContatos(contatos); // SALVA OS CONTATOS E SAI
                 	continuar = Uteis.sair();
                 }
-                case 7-> Uteis.sobre();
-                default -> System.out.println("Opção inválida!");
-            }
-        }
+                case 7-> Uteis.sobre(); // JANELA COM DADOS DO PROGRAMA
+                default -> System.out.println("Opção inválida!"); // CASO DIGITE ALGO INVÁLIDO(números apenas)
+            } // switch
+        } // while
         sc.close();
-    }	
-}
+    }	// main
+} // principal

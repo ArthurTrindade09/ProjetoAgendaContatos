@@ -4,44 +4,55 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-// V3.2.0 IMPLEMENTA CRUD ORIENTADO A OBJETOS
+import br.edu.dao.ContatoDao;
+import br.edu.modelo.Contato;
+import br.edu.servico.Agenda;
+
+import br.edu.uteis.Uteis;
 
 public class Principal {
 	
 	public static void main(String[] args) {
 
-		List<Contato> contatos = new ArrayList<>(); // CRIAR UMA LISTA DE CONTATOS
+		List<Contato> contatos = new ArrayList<>();
+		
+		ContatoDao dao = new ContatoDao("contatos.txt");
 
-        Persistencia.carregarContatos(contatos); // CARREGA A LISTA DE CONTATOS
+		dao.carregarContatos(contatos);
         
-        // CRIAR VARIAVEIS DE CONTROLE DO PROGRAMA
         int opcao;
-        boolean continuar = true;
         
-        Scanner sc = new Scanner(System.in); // OBJETO QUE RECEBE ENTRADAS DO USUÁRIO
+        Scanner sc = new Scanner(System.in);
         
-        Uteis.mostraInicializacao();  // MOSTRA TELINHA PRINCIPAL 
+        Uteis.mostraInicializacao(); 
 
-        // LOOP PRINCIPAL DO PROGRAMA
-        while (continuar) {
-        
-        	Uteis.mostraMenu(); // MOSTRA TELINHA DAS OPÇÕES
-            opcao = Uteis.selecionaOpcao(sc);
+        while (true) {
+        	
+        	Uteis.mostraMenu();
+            
+        	opcao = Uteis.selecionaOpcao(sc);
 
             switch (opcao) {
-                case 1-> Agenda.adicionar(sc, contatos);   // ADICIONAR         	
-                case 2-> Agenda.listar(contatos);          // LISTAR
-                case 3-> Agenda.pesquisar(sc, contatos);   // PESQUISAR
-                case 4-> Agenda.atualizar(sc, contatos);   // ATUALIZAR
-                case 5-> Agenda.excluir(sc, contatos);     // EXCLUIR
+                case 1-> Agenda.adicionar(sc, contatos);           	
+                case 2-> Agenda.listar(contatos);
+                case 3-> Agenda.pesquisar(sc, contatos);
+                case 4-> Agenda.atualizar(sc, contatos);           	
+                case 5-> Agenda.excluir(sc, contatos);          	
                 case 6-> {
-                	Persistencia.salvarContatos(contatos); // SALVA OS CONTATOS E SAI
-                	continuar = Uteis.sair();
+                	boolean salvou = dao.salvarContatos(contatos);
+                    if (salvou) {
+                        Uteis.sair();
+                        sc.close();
+                        return;
+                    }
+                    else {
+                        System.out.println("Não foi possível salvar os contatos.");
+                        System.out.println("A aplicação continuará em execução.");
+                    }
                 }
-                case 7-> Uteis.sobre(); // JANELA COM DADOS DO PROGRAMA
-                default -> System.out.println("Opção inválida!"); // CASO DIGITE ALGO INVÁLIDO(números apenas)
-            } // switch
-        } // while
-        sc.close();
-    }	// main
-} // principal
+                case 7-> Uteis.sobre();
+                default -> System.out.println("Opção Inválida!");
+            }
+        }
+    }	
+}

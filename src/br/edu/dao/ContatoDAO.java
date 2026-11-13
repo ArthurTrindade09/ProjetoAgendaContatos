@@ -10,11 +10,11 @@ import java.util.List;
 
 import br.edu.modelo.Contato;
 
-public class ContatoDao {
+public class ContatoDAO {
 	
 	private String caminhoArquivo;
 
-	public ContatoDao(String caminhoArquivo) {
+	public ContatoDAO(String caminhoArquivo) {
 		this.caminhoArquivo = caminhoArquivo;
 	}
 

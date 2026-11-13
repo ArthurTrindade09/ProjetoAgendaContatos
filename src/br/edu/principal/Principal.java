@@ -1,14 +1,15 @@
 package br.edu.principal;
 
 import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Scanner;
 
-import br.edu.dao.ContatoDao;
+import br.edu.dao.ContatoDAO;
 import br.edu.modelo.Contato;
-import br.edu.servico.Agenda;
 
-import br.edu.uteis.Uteis;
+import br.edu.visao.AgendaView;
+import br.edu.controle.AgendaController;
 
 public class Principal {
 	
@@ -16,32 +17,101 @@ public class Principal {
 
 		List<Contato> contatos = new ArrayList<>();
 		
-		ContatoDao dao = new ContatoDao("contatos.txt");
+		ContatoDAO dao = new ContatoDAO("contatos.txt");
 
 		dao.carregarContatos(contatos);
+		
+		AgendaController controller = new AgendaController(contatos, dao);
+		
+		
         
         int opcao;
         
         Scanner sc = new Scanner(System.in);
         
-        Uteis.mostraInicializacao(); 
+        AgendaView view = new AgendaView(sc);
+        
+        view.mostraInicializacao(); 
 
         while (true) {
         	
-        	Uteis.mostraMenu();
-            
-        	opcao = Uteis.selecionaOpcao(sc);
+        	view.mostrarMenu();
+
+        	opcao = view.selecionarOpcao();
 
             switch (opcao) {
-                case 1-> Agenda.adicionar(sc, contatos);           	
-                case 2-> Agenda.listar(contatos);
-                case 3-> Agenda.pesquisar(sc, contatos);
-                case 4-> Agenda.atualizar(sc, contatos);           	
-                case 5-> Agenda.excluir(sc, contatos);          	
+                case 1-> {
+                	Contato contato = view.lerContato();
+                    controller.adicionarContato(contato);
+                    view.mostrarMensagem("Contato adicionado com sucesso!");
+                }          	
+                case 2-> {
+                	List<Contato> lista = controller.listarContatos();
+                    view.mostrarContatos(lista);
+                }
+                case 3-> {
+                	String nome = view.lerNomePesquisa();
+                    Contato contato = controller.pesquisarContato(nome);
+                    view.mostrarResultadoPesquisa(contato);
+                }
+                case 4-> {
+                	String nome = view.lerNomePesquisa();
+
+                    Contato contato = controller.pesquisarContato(nome);
+
+                    if (contato == null) {
+
+                        view.mostrarMensagem("Contato não encontrado.");
+
+                    } else {
+
+                        view.mostrarResultadoPesquisa(contato);
+
+                        Contato novosDados = view.lerDadosAtualizacao();
+
+                        boolean atualizado = controller.atualizarContato(
+                                nome,
+                                novosDados.getNome(),
+                                novosDados.getCelular(),
+                                novosDados.getEmail()
+                        );
+
+                        if (atualizado) {
+                            view.mostrarMensagem("Contato atualizado com sucesso!");
+                        }
+                    }
+                }          	
+                case 5-> {
+                	String nome = view.lerNomePesquisa();
+
+                    Contato contato = controller.pesquisarContato(nome);
+
+                    if (contato == null) {
+
+                        view.mostrarMensagem("Contato não encontrado.");
+
+                    } else {
+
+                        view.mostrarResultadoPesquisa(contato);
+
+                        if (view.confirmarExclusao()) {
+
+                            boolean excluido = controller.excluirContato(nome);
+
+                            if (excluido) {
+                                view.mostrarMensagem("Contato excluído com sucesso!");
+                            }
+
+                        } else {
+
+                            view.mostrarMensagem("Exclusão cancelada.");
+                        }
+                    }
+                }        	
                 case 6-> {
-                	boolean salvou = dao.salvarContatos(contatos);
+                	boolean salvou = controller.salvarContatos();
                     if (salvou) {
-                        Uteis.sair();
+                        view.sair();
                         sc.close();
                         return;
                     }
@@ -50,7 +120,7 @@ public class Principal {
                         System.out.println("A aplicação continuará em execução.");
                     }
                 }
-                case 7-> Uteis.sobre();
+                case 7-> view.sobre();
                 default -> System.out.println("Opção Inválida!");
             }
         }
